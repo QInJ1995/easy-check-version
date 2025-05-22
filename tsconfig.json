@@ -1,0 +1,37 @@
+{
+  // 配置TypeScript编译器的选项
+  "compilerOptions": {
+    // 设置输出代码的目标运行环境，这里选择ES2020
+    "target": "ES2020",
+    // 使用`define`语法来定义类字段，而不是ES5的getter/setter
+    "useDefineForClassFields": true,
+    // 指定要包含的库，这里包括ES2020的API、DOM API和DOM可迭代API
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    // 使用ESNext模块系统，即最新的ES模块标准
+    "module": "ESNext",
+    // 跳过对库文件的类型检查，以提高编译性能
+    "skipLibCheck": true,
+    // 使用bundler的模块解析策略
+    "moduleResolution": "bundler",
+    // 允许从具有.ts扩展名的文件导入模块
+    "allowImportingTsExtensions": true,
+    // 允许导入.json文件中的模块
+    "resolveJsonModule": true,
+    // 将每个文件作为独立的模块来解析
+    "isolatedModules": true,
+    // 不生成任何编译输出，仅用于类型检查
+    "noEmit": true,
+    // 使用react-jsx语法来编写JSX代码
+    "jsx": "react-jsx",
+    // 启用严格类型检查的选项
+    "strict": true,
+    // 警告未使用的局部变量
+    "noUnusedLocals": true,
+    // 警告未使用的函数参数
+    "noUnusedParameters": true,
+    // 在switch语句中禁止没有break的case
+    "noFallthroughCasesInSwitch": true
+  },
+  // 指定要编译的文件或目录，这里仅包括src目录下的文件
+  "include": ["src"],
+}
