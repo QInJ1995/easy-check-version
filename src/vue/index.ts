@@ -1,28 +1,34 @@
-import { App } from 'vue';
+import type { Plugin } from 'vue';
 import { CheckMethod, CheckOptions, VersionChecker } from '../types/core';
 import { VersionCheckPluginOptions } from '../types/vue';
 import { VersionCheckerFactory } from '../core/factory';
 
 /**
  * 版本检查插件，用于在Vue应用中集成版本检查功能
+ * 支持 Vue 2 和 Vue 3
  */
-export const VersionCheckPlugin = {
+export const VersionCheckPlugin: Plugin = {
   /**
    * 安装插件
    * @param app Vue应用实例
    * @param options 插件配置选项
    */
-  install: (app: App, options: VersionCheckPluginOptions) => {
+  install: (app: any, options: VersionCheckPluginOptions) => {
     // 根据配置创建版本检查器实例
     const checker = VersionCheckerFactory.create(
       options.method || 'polling',
       options
     );
 
-    // 将版本检查器注入到Vue应用中，以便在任何地方可以访问
-    app.provide('versionChecker', checker);
-    // 在全局属性中添加版本检查器，便于在应用中的任何地方访问
-    app.config.globalProperties.$versionChecker = checker;
+    // 判断是 Vue 2 还是 Vue 3
+    if ('provide' in app) {
+      // Vue 3
+      app.provide('versionChecker', checker);
+      app.config.globalProperties.$versionChecker = checker;
+    } else {
+      // Vue 2
+      app.prototype.$versionChecker = checker;
+    }
   }
 };
 
