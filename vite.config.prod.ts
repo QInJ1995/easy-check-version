@@ -49,9 +49,6 @@ export default defineConfig({
         // 配置库的入口文件路径、库的名称和输出文件名
         lib: {
             entry: 'src/index.ts',
-            name: 'EasyCheckVersion',
-            fileName: 'easy-check-version',
-            formats: ['es', 'umd'], // 输出格式为 ES 和 UMD
         },
         // 配置 Rollup 的选项，用于打包库
         rollupOptions: {
@@ -60,14 +57,32 @@ export default defineConfig({
                 'vue',
                 'react',
             ],
-
             // 配置输出选项，指定全局变量名称
-            output: {
-                globals: {
-                    vue: 'Vue',
-                    react: 'React'
+            output: [
+                {
+                    format: 'es',
+                    dir: 'dist',
+                    entryFileNames: 'easy-check-version.js', // 输出文件名
+                    preserveModules: false, // 将每个入口文件打包成单独的文件
+                    preserveModulesRoot: 'src', // 将每个入口文件打包成单独的文件
+                    globals: {
+                        vue: 'Vue',
+                        react: 'React'
+                    },
+                },
+                {
+                    format: 'umd',
+                    dir: 'dist',
+                    entryFileNames: 'easy-check-version.umd.js', // 输出文件名
+                    name: 'EasyCheckVersion', // 输出文件名
+                    globals: {
+                        vue: 'Vue',
+                        react: 'React'
+                    },
+                    exports: 'named', // 输出文件名
+                    extend: true // 扩展全局变量
                 }
-            }
+            ]
         }
     }
 })
