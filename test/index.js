@@ -1,4 +1,5 @@
-import { createVersionChecker } from '/dist/easy-check-version'
+import  createVersionChecker  from '/dist/easy-check-version'
+console.log("🚀 ~ createVersionChecker:", createVersionChecker)
 
 
 const checker = createVersionChecker('polling', {

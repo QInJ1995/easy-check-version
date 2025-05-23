@@ -51,10 +51,10 @@ checker.check();
 ### React 集成
 
 ```typescript
-import { useVersionCheck } from 'easy-check-version/react';
+import { useReactVersionCheck } from 'easy-check-version/react';
 
 function App() {
-  const { check, start, stop } = useVersionCheck({
+  const { check, start, stop } = useReactVersionCheck({
     url: 'https://your-api.com/version',
     method: 'polling', // 可选，默认为 'polling'
     interval: 60000,
@@ -75,13 +75,13 @@ function App() {
 ### Vue 集成
 
 ```typescript
-import { VersionCheckPlugin } from 'easy-check-version/vue';
+import { VersionCheckVuePlugin } from 'easy-check-version/vue';
 import { createApp } from 'vue';
 import App from './App.vue';
 
 const app = createApp(App);
 
-app.use(VersionCheckPlugin, {
+app.use(VersionCheckVuePlugin, {
   url: 'https://your-api.com/version',
   method: 'polling', // 可选，默认为 'polling'
   interval: 60000,

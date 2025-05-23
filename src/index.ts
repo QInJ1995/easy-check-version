@@ -3,12 +3,13 @@ import { VersionCheckerFactory } from './core/factory';
 
 // 导出核心模块中的类型定义，以便外部使用
 export * from './types/core';
-// 导出工厂类模块，提供创建版本检查器的能力
-export * from './core/factory';
 // 导出Vue相关模块，可能包含与Vue集成的版本检查组件或工具
-export * from './vue';
+import vueCfg from './vue';
 // 导出React相关模块，可能包含与React集成的版本检查组件或工具
-export * from './react';
+import reactCfg from './react';
+
+export const VersionCheckVuePlugin = vueCfg.VersionCheckVuePlugin;
+export const useReactVersionCheck = reactCfg.useReactVersionCheck;
 
 /**
  * 创建版本检查器的函数，根据指定的方法和选项配置
@@ -28,4 +29,10 @@ export function createVersionChecker(method: 'polling' | 'websocket' | 'sse', op
 }) {
   // 使用工厂类创建并返回版本检查器实例
   return VersionCheckerFactory.create(method, options);
+}
+
+export default {
+  VersionCheckVuePlugin,
+  useReactVersionCheck,
+  createVersionChecker
 }

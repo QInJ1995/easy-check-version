@@ -1,6 +1,6 @@
 {
   "name": "easy-check-version",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "description": "一个用于检查版本更新的工具",
   "main": "dist/easy-check-version.umd.cjs",
@@ -28,7 +28,7 @@
     "@types/react-dom": "^18.2.0",
     "@vitejs/plugin-react": "^4.2.0",
     "@vitejs/plugin-vue": "^5.0.0",
-    "easy-check-version": "^0.0.1",
+    "easy-check-version": "^0.0.3",
     "json-server": "^1.0.0-beta.3",
     "rollup-plugin-visualizer": "^5.14.0",
     "typescript": "^5.2.0",

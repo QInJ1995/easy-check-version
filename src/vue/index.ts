@@ -1,5 +1,4 @@
 import type { Plugin } from 'vue';
-import { CheckMethod, CheckOptions, VersionChecker } from '../types/core';
 import { VersionCheckPluginOptions } from '../types/vue';
 import { VersionCheckerFactory } from '../core/factory';
 
@@ -7,7 +6,7 @@ import { VersionCheckerFactory } from '../core/factory';
  * 版本检查插件，用于在Vue应用中集成版本检查功能
  * 支持 Vue 2 和 Vue 3
  */
-export const VersionCheckPlugin: Plugin = {
+const VersionCheckVuePlugin: Plugin = {
   /**
    * 安装插件
    * @param app Vue应用实例
@@ -32,5 +31,5 @@ export const VersionCheckPlugin: Plugin = {
   }
 };
 
-// 导出类型，以便在其他地方可以引用
-export type { VersionChecker, CheckMethod, CheckOptions };
+
+export default { VersionCheckVuePlugin };

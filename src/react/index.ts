@@ -10,7 +10,7 @@ import { VersionCheckerFactory } from '../core/factory';
  * @param options 包含版本检查配置的选项对象，以及可选的检查方法
  * @returns 返回一个包含检查、启动和停止版本检查方法的对象
  */
-export function useVersionCheck(options: CheckOptions & { method?: CheckMethod }) {
+function useReactVersionCheck(options: CheckOptions & { method?: CheckMethod }) {
   // 用于存储版本检查器实例的引用
   const checkerRef = useRef<VersionChecker | null>(null);
 
@@ -39,5 +39,4 @@ export function useVersionCheck(options: CheckOptions & { method?: CheckMethod }
   };
 }
 
-// 导出类型供外部使用
-export type { VersionChecker, CheckMethod, CheckOptions };
+export default { useReactVersionCheck };
