@@ -34,4 +34,5 @@
   },
   // 指定要编译的文件或目录，这里仅包括src目录下的文件
   "include": ["src"],
+  "exclude": ["test", "test/**/*", "**/*.test.ts"] // 排除 test 文件夹
 }

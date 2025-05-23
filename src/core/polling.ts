@@ -25,8 +25,9 @@ export class PollingChecker implements VersionChecker {
     try {
       // 请求版本信息URL
       const response = await fetch(this.options.url);
+      
       // 解析响应数据为 VersionInfo 类型
-      const data: VersionInfo = await response.json();
+      let data: VersionInfo = response.json === undefined ? response : await response.json();
 
       // 如果当前已知版本号不为空且与获取到的版本号不同，则调用更新回调函数
       if (this.currentVersion && this.currentVersion !== data.version + '-' + data.timestamp) {

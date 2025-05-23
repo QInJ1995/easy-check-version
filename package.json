@@ -1,6 +1,5 @@
 {
   "name": "easy-check-version",
-  "private": true,
   "version": "0.0.1",
   "type": "module",
   "description": "一个用于检查版本更新的工具",
@@ -11,7 +10,8 @@
     "build:ts": "tsc",
     "build:vite": "vite build",
     "build": "npm run build:ts && npm run build:vite",
-    "server": "npx json-server db.json"
+    "server": "npx json-server db.json",
+    "test": "vite"
   },
   "keywords": [
     "easy-check-version"
@@ -33,6 +33,7 @@
     "typescript": "^5.2.0",
     "vite": "^5.0.0",
     "vite-plugin-dts": "^4.5.4",
+    "vite-plugin-html": "^3.2.2",
     "vite-plugin-progress": "^0.0.7"
   }
 }

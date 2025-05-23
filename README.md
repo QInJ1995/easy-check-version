@@ -26,7 +26,8 @@ yarn add easy-check-version
 import { createVersionChecker } from 'easy-check-version';
 
 const checker = createVersionChecker('polling', {
-  url: 'https://your-api.com/version',
+  // url: '/test/version.json', // 项目本地version.json 文件的 URL json 格式为 { version: '1.0.0', timestamp: 1234567890, forceUpdate: true }
+  url: 'https://your-api.com/version', // API 地址
   interval: 60000, // 可选，检查间隔（毫秒），默认 60000
   onUpdate: (info) => {
     console.log('发现新版本:', info.version);
