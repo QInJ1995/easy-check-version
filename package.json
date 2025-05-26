@@ -1,12 +1,15 @@
 {
   "name": "easy-check-version",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "一个用于检查版本更新的工具",
+  "type": "module",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/easy-check-version.js",
-      "require": "./dist/easy-check-version.umd.js",
-      "types": "./dist/easy-check-version.d.ts"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
     }
   },
   "scripts": {

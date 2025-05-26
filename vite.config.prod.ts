@@ -21,40 +21,22 @@ export default defineConfig({
         // 配置库的入口文件路径、库的名称和输出文件名
         lib: {
             entry: 'src/index.ts',
+            name: 'EasyCheckVersion',
+            formats: ['es', 'cjs', 'umd'], // 生成ESModule和CommonJS格式
+            fileName: (format) => getFileName(format),
         },
         // 配置 Rollup 的选项，用于打包库
         rollupOptions: {
             // 配置外部依赖，不打包 'vue' 和 'react' 模块
-            external: [
-                'vue',
-                'react',
-            ],
+            external: ['vue', 'react',],
             // 配置输出选项，指定全局变量名称
-            output: [
-                {
-                    format: 'es',
-                    dir: 'dist',
-                    entryFileNames: 'easy-check-version.js', // 输出文件名
-                    preserveModules: false, // 将每个入口文件打包成单独的文件
-                    preserveModulesRoot: 'src', // 将每个入口文件打包成单独的文件
-                    globals: {
-                        vue: 'Vue',
-                        react: 'React'
-                    },
+            output: {
+                // 在UMD构建模式下为这些外部化的依赖提供全局变量
+                globals: {
+                    react: 'React',
+                    vue: 'Vue',
                 },
-                {
-                    format: 'umd',
-                    dir: 'dist',
-                    entryFileNames: 'easy-check-version.umd.js', // 输出文件名
-                    name: 'EasyCheckVersion', // 输出文件名
-                    globals: {
-                        vue: 'Vue',
-                        react: 'React'
-                    },
-                    exports: 'named', // 输出文件名
-                    extend: true // 扩展全局变量
-                }
-            ]
+            }
         }
     },
     // 配置插件列表
@@ -97,3 +79,16 @@ const showLog = (): void => {
         ' "+.+"+.+"+.+"+.+"+.+"+.+"+.+"+.+"+.+"+.+"+.+"+.+"+.+"+.+"+.+"+.+"+.+"+.+"+.+"+.+"+.+"+.+"+.+"+.+" ' + '\n'
     );
 }
+
+// 定义格式到文件后缀的映射关系
+const formatToExtensionMap: Record<string, string> = {
+    es: 'mjs',
+    cjs: 'cjs',
+    umd: 'umd.js',
+};
+
+// 获取文件名的函数（可复用、可扩展）
+const getFileName = (format: string): string => {
+    const ext = formatToExtensionMap[format] || 'js'; // 默认 fallback 到 js
+    return `index.${ext}`;
+};
