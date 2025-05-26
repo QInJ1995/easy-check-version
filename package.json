@@ -1,6 +1,6 @@
 {
   "name": "easy-check-version",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "一个用于检查版本更新的工具",
   "exports": {
     ".": {
