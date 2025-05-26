@@ -7,8 +7,9 @@ export * from './types/core';
 import vueCfg from './vue';
 // 导出React相关模块，可能包含与React集成的版本检查组件或工具
 import reactCfg from './react';
-
+// 导出Vue插件
 export const VersionCheckVuePlugin = vueCfg.VersionCheckVuePlugin;
+// 导出React hooks
 export const useReactVersionCheck = reactCfg.useReactVersionCheck;
 
 /**

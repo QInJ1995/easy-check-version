@@ -18,9 +18,7 @@ export default defineConfig({
     // 配置插件列表
     plugins: [
         // 显示构建进度条
-        progress({
-            callback: () => showLog()
-        }),
+        progress(),
         // 配置 Vue 插件
         vue(),
         // 配置 React 插件
@@ -35,6 +33,13 @@ export default defineConfig({
             filename: 'analysis.html', // 输出文件名
             open: false, // 是否自动打开浏览器
         }),
+        // 构建完成回调
+        {
+            name: 'build-complete',
+            async closeBundle() {
+                showLog()
+            }
+        }
     ],
     // 配置构建选项
     build: {
